@@ -34,6 +34,7 @@ dependencies {
     compile files('libs/commons-codec-1.6.jar')
     compile 'io.reactivex:rxjava:1.1.1'
     compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'de.greenrobot:eventbus:2.4.+'
 
 
 }

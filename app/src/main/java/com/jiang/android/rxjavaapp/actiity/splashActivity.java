@@ -30,6 +30,12 @@ public class splashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewLayoutID());
+        boolean isFirst = SharePrefUtil.getBoolean(this, SPKey.FIRST_ENTER, true);
+        if (isFirst) {
+            Intent intent = new Intent(this, InitDataService.class);
+            startService(intent);
+            this.finish();
+        }
         mSplashIndex = (ImageView) findViewById(R.id.splash_index);
         initViewsAndEvents();
     }
@@ -69,13 +75,10 @@ public class splashActivity extends Activity {
     }
 
     private void toGuideOrMain() {
-        boolean isFirst = SharePrefUtil.getBoolean(this, SPKey.FIRST_ENTER, true);
-        if (isFirst) {
-            Intent intent = new Intent(this, InitDataService.class);
-            startService(intent);
-        } else {
-            startActivity(new Intent(this, MainActivity.class));
-        }
+
+        startActivity(new Intent(this, MainActivity.class));
+        this.finish();
+
     }
 
     protected int getContentViewLayoutID() {

@@ -29,6 +29,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -52,8 +53,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
 
+    public void onEventMainThread(int center) {
+        if (center == 1) {
+            initToolBar();
+            initNavigationView();
+            initNavRecycerView();
+            mContentRecyclerView = (RecyclerView) findViewById(R.id.id_content);
+        }
+    }
+
     @Override
     protected void initViewsAndEvents() {
+        EventBus.getDefault().register(this);
         initToolBar();
         initNavigationView();
         initNavRecycerView();
@@ -241,6 +252,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
