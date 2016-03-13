@@ -26,84 +26,61 @@
  * #                                                   #
  */
 
-package com.jiang.android.rxjavaapp;
-
-import android.app.IntentService;
-import android.content.Intent;
-import android.widget.Toast;
+package com.jiang.android.rxjavaapp.utils;
 
 import com.jiang.android.rxjavaapp.common.CommonString;
 import com.jiang.android.rxjavaapp.common.OperatorsUrl;
-import com.jiang.android.rxjavaapp.common.SPKey;
 import com.jiang.android.rxjavaapp.database.alloperators;
 import com.jiang.android.rxjavaapp.database.helper.DbUtil;
 import com.jiang.android.rxjavaapp.database.operators;
-import com.jiang.android.rxjavaapp.utils.L;
-import com.jiang.android.rxjavaapp.utils.SharePrefUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import de.greenrobot.event.EventBus;
-import rx.Observable;
-import rx.Subscriber;
+import rx.Single;
+import rx.SingleSubscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
  * Created by jiang on 16/3/13.
  */
-public class InitDataService extends IntentService {
+public class DataUtils {
+    static long i = 1l;
+    static long parentId = 1l;
 
-    public InitDataService() {
-        super("InitDataService");
-    }
-
-    long i = 1l;
-    long parentId = 1l;
-
-    @Override
-    protected void onHandleIntent(Intent intent) {
-
-        Observable.create(new Observable.OnSubscribe<Boolean>() {
+    public static void fillData(final callBack call) {
+        Single.create(new Single.OnSubscribe<Boolean>() {
             @Override
-            public void call(Subscriber<? super Boolean> subscriber) {
-
+            public void call(SingleSubscriber<? super Boolean> singleSubscriber) {
                 try {
                     List<operators> lists = getOperatorsData();
                     List<alloperators> alloperatorses = getAllOperators();
                     DbUtil.getOperatorsService().save(lists);
                     DbUtil.getAllOperatorsService().save(alloperatorses);
-                    subscriber.onNext(true);
-                    subscriber.onCompleted();
+                    singleSubscriber.onSuccess(true);
                 } catch (Exception e) {
-                    subscriber.onError(e);
+                    singleSubscriber.onError(e);
                 }
             }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<Boolean>() {
-            @Override
-            public void onCompleted() {
-                Toast.makeText(InitDataService.this, "数据库初始化成功", Toast.LENGTH_SHORT).show();
-                SharePrefUtil.saveBoolean(InitDataService.this, SPKey.FIRST_ENTER, false);
-                EventBus.getDefault().post(1);
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleSubscriber<Boolean>() {
+                    @Override
+                    public void onSuccess(Boolean value) {
+                        call.onSuccess();
+                    }
 
-            }
+                    @Override
+                    public void onError(Throwable error) {
+                        call.onFail(error);
+                    }
+                });
 
-            @Override
-            public void onError(Throwable e) {
-                Toast.makeText(InitDataService.this, "保存数据失败，请退出重试,错误信息:" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                L.e(e.getMessage());
-            }
-
-            @Override
-            public void onNext(Boolean operatorss) {
-
-            }
-        });
     }
 
 
-    public List<operators> getOperatorsData() {
+    public static List<operators> getOperatorsData() {
         List<operators> lists = new ArrayList<>();
         lists.add(new operators(1l, "RxJava介绍", 1l));
         lists.add(new operators(2l, "Creating", 2l));
@@ -122,7 +99,7 @@ public class InitDataService extends IntentService {
         return lists;
     }
 
-    public List<alloperators> getAllOperators() {
+    public static List<alloperators> getAllOperators() {
 
         List<alloperators> alloperatorses = new ArrayList<>();
         getIntroduceList(alloperatorses);
@@ -137,7 +114,7 @@ public class InitDataService extends IntentService {
     }
 
 
-    private void getStringList(List<alloperators> alloperatorses) {
+    private static void getStringList(List<alloperators> alloperatorses) {
         alloperatorses.add(new alloperators(i++, "byLine()", "将一个字符串的Observable转换为一个行序列的Observable，这个Observable将原来的序列当做流处理，然后按换行符分割", CommonString.byLine, OperatorsUrl.byLine, parentId));
         alloperatorses.add(new alloperators(i++, "decode()", "将一个多字节的字符流转换为一个Observable，它按字符边界发射字节数组", CommonString.decode, OperatorsUrl.decode, parentId));
         alloperatorses.add(new alloperators(i++, "encode()", "对一个发射字符串的Observable执行变换操作，变换后的Observable发射一个在原始字符串中表示多字节字符边界的字节数组", CommonString.encode, OperatorsUrl.encode, parentId));
@@ -149,7 +126,7 @@ public class InitDataService extends IntentService {
     }
 
 
-    private void getUtilityList(List<alloperators> alloperatorses) {
+    private static void getUtilityList(List<alloperators> alloperatorses) {
         alloperatorses.add(new alloperators(i++, "Materialize()", "将Observable转换成一个通知列表convert an Observable into a list of Notifications", CommonString.Materialize, OperatorsUrl.Materialize, parentId));
         alloperatorses.add(new alloperators(i++, "Dematerialize()", "将上面的结果逆转回一个Observable", CommonString.Dematerialize, OperatorsUrl.Dematerialize, parentId));
         alloperatorses.add(new alloperators(i++, "Timestamp()", "给Observable发射的每个数据项添加一个时间戳", CommonString.Timestamp, OperatorsUrl.Timestamp, parentId));
@@ -173,7 +150,7 @@ public class InitDataService extends IntentService {
     }
 
 
-    private void getErrorList(List<alloperators> alloperatorses) {
+    private static void getErrorList(List<alloperators> alloperatorses) {
         alloperatorses.add(new alloperators(i++, "onErrorResumeNext()", "指示Observable在遇到错误时发射一个数据序列", CommonString.EMPTY, OperatorsUrl.ERROR, parentId));
         alloperatorses.add(new alloperators(i++, "onErrorReturn()", "指示Observable在遇到错误时发射一个特定的数据", CommonString.EMPTY, OperatorsUrl.ERROR, parentId));
         alloperatorses.add(new alloperators(i++, "onExceptionResumeNext()", "instructs an Observable to continue emitting items after it encounters an exception (but not another variety of throwable)指示Observable遇到错误时继续发射数据", CommonString.EMPTY, OperatorsUrl.ERROR, parentId));
@@ -183,7 +160,7 @@ public class InitDataService extends IntentService {
     }
 
 
-    private void getCombinList(List<alloperators> alloperatorses) {
+    private static void getCombinList(List<alloperators> alloperatorses) {
         alloperatorses.add(new alloperators(i++, "startWith()", "在数据序列的开头增加一项数据", CommonString.STARTWITH, OperatorsUrl.STARTWITH, parentId));
         alloperatorses.add(new alloperators(i++, "merge()", "将多个Observable合并为一个", CommonString.MERGE, OperatorsUrl.MERGE, parentId));
         alloperatorses.add(new alloperators(i++, "mergeDelayError()", "合并多个Observables，让没有错误的Observable都完成后再发射错误通知", CommonString.MERGEDELAY, OperatorsUrl.MERGEDELAY, parentId));
@@ -195,7 +172,7 @@ public class InitDataService extends IntentService {
         parentId++;
     }
 
-    private void getIntroduceList(List<alloperators> alloperatorses) {
+    private static void getIntroduceList(List<alloperators> alloperatorses) {
         alloperatorses.add(new alloperators(i++, "ReactiveX", "什么是Rx，Rx的理念和优势", CommonString.SPLASH_INDEX_URL, OperatorsUrl.INTRODUCE, parentId));
         alloperatorses.add(new alloperators(i++, "Observables", "简要介绍Observable的观察者模型", CommonString.OBSERVABLES, OperatorsUrl.OBSERVABLES, parentId));
         alloperatorses.add(new alloperators(i++, "Single", "一种特殊的只发射单个值的Observable", CommonString.SPLASH_INDEX_URL, OperatorsUrl.SINGLE, parentId));
@@ -204,7 +181,7 @@ public class InitDataService extends IntentService {
         parentId++;
     }
 
-    private void getCreatingList(List<alloperators> alloperatorses) {
+    private static void getCreatingList(List<alloperators> alloperatorses) {
 
         alloperatorses.add(new alloperators(i++, "just()", "将一个或多个对象转换成发射这个或这些对象的一个Observable", CommonString.JUST, OperatorsUrl.JUST, parentId));
         alloperatorses.add(new alloperators(i++, "from()", "将一个Iterable, 一个Future, 或者一个数组转换成一个Observable", CommonString.FROM, OperatorsUrl.FROM, parentId));
@@ -221,7 +198,7 @@ public class InitDataService extends IntentService {
         parentId++;
     }
 
-    private void getTransformList(List<alloperators> alloperatorses) {
+    private static void getTransformList(List<alloperators> alloperatorses) {
         alloperatorses.add(new alloperators(i++, "map()", "对序列的每一项都应用一个函数来变换Observable发射的数据序列", CommonString.MAP, OperatorsUrl.MAP, parentId));
         alloperatorses.add(new alloperators(i++, "flatMap()", "将Observable发射的数据集合变换为Observables集合，然后将这些Observable发射的数据平坦化的放进一个单独的Observable", CommonString.FLATMAP, OperatorsUrl.FLATMAP, parentId));
         alloperatorses.add(new alloperators(i++, "concatMap()", "将Observable发射的数据集合变换为Observables集合，然后将这些Observable发射的数据平坦化的放进一个单独的Observable", CommonString.CONTACTMAP, OperatorsUrl.CONTACTMAP, parentId));
@@ -234,7 +211,7 @@ public class InitDataService extends IntentService {
         parentId++;
     }
 
-    private void getFilterList(List<alloperators> alloperatorses) {
+    private static void getFilterList(List<alloperators> alloperatorses) {
         alloperatorses.add(new alloperators(i++, "filter()", "过滤数据", CommonString.FILTER, OperatorsUrl.FILTER, parentId));
         alloperatorses.add(new alloperators(i++, "takeLast()", "只发射最后的N项数据", CommonString.TAKE_LAST, OperatorsUrl.TAKE_LAST, parentId));
         alloperatorses.add(new alloperators(i++, "last()", "只发射最后的一项数据", CommonString.LAST, OperatorsUrl.LAST, parentId));
@@ -256,5 +233,13 @@ public class InitDataService extends IntentService {
         alloperatorses.add(new alloperators(i++, "ofType()", "只发射指定类型的数据", CommonString.OF_TYPE, OperatorsUrl.OF_TYPE, parentId));
         alloperatorses.add(new alloperators(i++, "ignoreElements()", "丢弃所有的正常数据，只发射错误或完成通知", CommonString.IGNORE_ELEMENT, OperatorsUrl.IGNORE_ELEMENT, parentId));
         parentId++;
+    }
+
+
+    public interface callBack {
+        void onSuccess();
+
+        void onFail(Throwable e);
+
     }
 }
