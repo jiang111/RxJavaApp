@@ -117,4 +117,14 @@ public class CommonString {
     public static final String First = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/first.c.png";
     public static final String To = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/to.c.png";
 
+
+    //string
+    public static final String byLine = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/St.byLine.png";
+    public static final String decode = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/St.decode.png";
+    public static final String encode = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/St.encode.png";
+    public static final String from_String = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/St.from.png";
+    public static final String join = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/St.join.png";
+    public static final String split = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/St.split.png";
+    public static final String stringConcat = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/sum.f.png";
+
 }

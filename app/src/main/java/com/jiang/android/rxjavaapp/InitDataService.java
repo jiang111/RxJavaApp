@@ -132,7 +132,20 @@ public class InitDataService extends IntentService {
         getCombinList(alloperatorses);
         getErrorList(alloperatorses);
         getUtilityList(alloperatorses);
+        getStringList(alloperatorses);
         return alloperatorses;
+    }
+
+
+    private void getStringList(List<alloperators> alloperatorses) {
+        alloperatorses.add(new alloperators(i++, "byLine()", "将一个字符串的Observable转换为一个行序列的Observable，这个Observable将原来的序列当做流处理，然后按换行符分割", CommonString.byLine, OperatorsUrl.byLine, parentId));
+        alloperatorses.add(new alloperators(i++, "decode()", "将一个多字节的字符流转换为一个Observable，它按字符边界发射字节数组", CommonString.decode, OperatorsUrl.decode, parentId));
+        alloperatorses.add(new alloperators(i++, "encode()", "对一个发射字符串的Observable执行变换操作，变换后的Observable发射一个在原始字符串中表示多字节字符边界的字节数组", CommonString.encode, OperatorsUrl.encode, parentId));
+        alloperatorses.add(new alloperators(i++, "from()", "将一个字符流或者Reader转换为一个发射字节数组或者字符串的Observable", CommonString.from_String, OperatorsUrl.from_String, parentId));
+        alloperatorses.add(new alloperators(i++, "join()", "将一个发射字符串序列的Observable转换为一个发射单个字符串的Observable，后者用一个指定的字符串连接所有的字符串", CommonString.join, OperatorsUrl.join, parentId));
+        alloperatorses.add(new alloperators(i++, "split()", "将一个发射字符串的Observable转换为另一个发射字符串的Observable，后者使用一个指定的正则表达式边界分割前者发射的所有字符串", CommonString.split, OperatorsUrl.split, parentId));
+        alloperatorses.add(new alloperators(i++, "stringConcat()", "将一个发射字符串序列的Observable转换为一个发射单个字符串的Observable，后者连接前者发射的所有字符串", CommonString.stringConcat, OperatorsUrl.stringConcat, parentId));
+        parentId++;
     }
 
 

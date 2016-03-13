@@ -125,4 +125,14 @@ public class OperatorsUrl {
     public static final String First = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/First.md";
     public static final String To = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/To.md";
 
+
+    //string
+    public static final String byLine = MAP;
+    public static final String decode = FROM;
+    public static final String encode = MAP;
+    public static final String from_String = FROM;
+    public static final String join = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/Sum.md";
+    public static final String split = FLATMAP;
+    public static final String stringConcat = join;
+
 }
