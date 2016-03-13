@@ -33,6 +33,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.jiang.android.rxjavaapp.actiity.MainActivity;
+import com.jiang.android.rxjavaapp.base.BaseAppManager;
 import com.jiang.android.rxjavaapp.common.CommonString;
 import com.jiang.android.rxjavaapp.common.OperatorsUrl;
 import com.jiang.android.rxjavaapp.common.SPKey;
@@ -81,6 +82,7 @@ public class InitDataService extends IntentService {
             @Override
             public void onCompleted() {
                 Toast.makeText(InitDataService.this, "数据库初始化成功", Toast.LENGTH_SHORT).show();
+                BaseAppManager.getInstance().clear();
                 SharePrefUtil.saveBoolean(InitDataService.this, SPKey.FIRST_ENTER, false);
                 Intent dialogIntent = new Intent(getBaseContext(), MainActivity.class);
                 dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -120,26 +122,12 @@ public class InitDataService extends IntentService {
         return lists;
     }
 
-    /**
-     * Creating 创建操作 - Create/Defer/From/Just/Start/Repeat/Range
-     * Transforming 变换操作 - Buffer/Window/Map/FlatMap/GroupBy/Scan
-     * Filtering 过滤操作 - Debounce/Distinct/Filter/Sample/Skip/Take
-     * Combining 结合操作 - And/StartWith/Join/Merge/Switch/Zip
-     * Error Handling 错误处理 - Catch/Retry
-     * Utility 辅助操作 - Delay/Do/ObserveOn/SubscribeOn/Subscribe
-     * Conditional 条件和布尔操作 - All/Amb/Contains/SkipUntil/TakeUntil
-     * Mathematical 算术和聚合操作 - Average/Concat/Count/Max/Min/Sum/Reduce
-     * Async 异步操作 - Start/ToAsync/StartFuture/FromAction/FromCallable/RunAsync
-     * Connect 连接操作 - Connect/Publish/RefCount/Replay
-     * Convert 转换操作 - ToFuture/ToList/ToIterable/ToMap/toMultiMap
-     * Blocking 阻塞操作 - ForEach/First/Last/MostRecent/Next/Single/Latest
-     * String 字符串操作 - ByLine/Decode/Encode/From/Join/Split/StringConcat
-     */
-
     public List<alloperators> getAllOperators() {
 
         List<alloperators> alloperatorses = new ArrayList<>();
         getIntroduceList(alloperatorses);
+        getCreatingList(alloperatorses);
+        getTransformList(alloperatorses);
         return alloperatorses;
     }
 
@@ -152,14 +140,33 @@ public class InitDataService extends IntentService {
 
     }
 
+    private void getCreatingList(List<alloperators> alloperatorses) {
+        alloperatorses.add(new alloperators(6l, "just()", "将一个或多个对象转换成发射这个或这些对象的一个Observable", CommonString.JUST, OperatorsUrl.JUST, 2l));
+        alloperatorses.add(new alloperators(7l, "from()", "将一个Iterable, 一个Future, 或者一个数组转换成一个Observable", CommonString.FROM, OperatorsUrl.FROM, 2l));
+        alloperatorses.add(new alloperators(8l, "repeat()", "创建一个重复发射指定数据或数据序列的Observable", CommonString.REPEAT, OperatorsUrl.REPEAT, 2l));
+        alloperatorses.add(new alloperators(9l, "repeatWhen()", "创建一个重复发射指定数据或数据序列的Observable，它依赖于另一个Observable发射的数据", CommonString.REPEAT_WHEN, OperatorsUrl.REPEAT, 2l));
+        alloperatorses.add(new alloperators(10l, "create()", "使用一个函数从头创建一个Observable", CommonString.CREATE, OperatorsUrl.CREATE, 2l));
+        alloperatorses.add(new alloperators(11l, "defer()", "只有当订阅者订阅才创建Observable；为每个订阅创建一个新的Observable", CommonString.DEFER, OperatorsUrl.DEFER, 2l));
+        alloperatorses.add(new alloperators(12l, "range()", "创建一个发射指定范围的整数序列的Observable", CommonString.RANGE, OperatorsUrl.DEFER, 2l));
+        alloperatorses.add(new alloperators(13l, "interval()", "创建一个按照给定的时间间隔发射整数序列的Observable", CommonString.INTERVAL, OperatorsUrl.INTERVAL, 2l));
+        alloperatorses.add(new alloperators(14l, "timer()", "创建一个按照给定的时间间隔发射整数序列的Observable", CommonString.TIMER, OperatorsUrl.TIMER, 2l));
+        alloperatorses.add(new alloperators(15l, "empty()", "创建一个什么都不做直接通知完成的Observable", CommonString.EMPTY, OperatorsUrl.EMPTY, 2l));
+        alloperatorses.add(new alloperators(16l, "error()", "创建一个什么都不做直接通知错误的Observable", CommonString.EMPTY, OperatorsUrl.EMPTY, 2l));
+        alloperatorses.add(new alloperators(17l, "never()", "创建一个不发射任何数据的Observable", CommonString.EMPTY, OperatorsUrl.EMPTY, 2l));
 
-    /**
-     *
-     *
-     * ReactiveX - 什么是Rx，Rx的理念和优势
-     Observables - 简要介绍Observable的观察者模型
-     Single - 一种特殊的只发射单个值的Observable
-     Subject - Observable和Observer的复合体，也是二者的桥梁
-     */
+    }
+
+    private void getTransformList(List<alloperators> alloperatorses) {
+        alloperatorses.add(new alloperators(18l, "map()", "对序列的每一项都应用一个函数来变换Observable发射的数据序列", CommonString.MAP, OperatorsUrl.MAP, 3l));
+        alloperatorses.add(new alloperators(19l, "flatMap()", "将Observable发射的数据集合变换为Observables集合，然后将这些Observable发射的数据平坦化的放进一个单独的Observable", CommonString.FLATMAP, OperatorsUrl.FLATMAP, 3l));
+        alloperatorses.add(new alloperators(20l, "concatMap()", "将Observable发射的数据集合变换为Observables集合，然后将这些Observable发射的数据平坦化的放进一个单独的Observable", CommonString.CONTACTMAP, OperatorsUrl.CONTACTMAP, 3l));
+        alloperatorses.add(new alloperators(21l, "switchMap()", "将Observable发射的数据集合变换为Observables集合，然后只发射这些Observables最近发射的数据", CommonString.SWITCHMAP, OperatorsUrl.SWITCHMAP, 3l));
+        alloperatorses.add(new alloperators(22l, "scan()", "对Observable发射的每一项数据应用一个函数，然后按顺序依次发射每一个值", CommonString.SCAN, OperatorsUrl.SCAN, 3l));
+        alloperatorses.add(new alloperators(23l, "groupBy()", "将Observable分拆为Observable集合，将原始Observable发射的数据按Key分组，每一个Observable发射一组不同的数据", CommonString.GROUPBY, OperatorsUrl.GROUPBY, 3l));
+        alloperatorses.add(new alloperators(24l, "buffer()", "它定期从Observable收集数据到一个集合，然后把这些数据集合打包发射，而不是一次发射一个", CommonString.BUFFER, OperatorsUrl.BUFFER, 3l));
+        alloperatorses.add(new alloperators(25l, "window()", "定期将来自Observable的数据分拆成一些Observable窗口，然后发射这些窗口，而不是每次发射一项", CommonString.WINDOW, OperatorsUrl.WINDOW, 3l));
+        alloperatorses.add(new alloperators(26l, "cast()", "在发射之前强制将Observable发射的所有数据转换为指定类型", CommonString.CAST, OperatorsUrl.CAST, 3l));
+
+    }
 
 }

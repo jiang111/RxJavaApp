@@ -48,6 +48,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private List<alloperators> mContentLists = new ArrayList<>();
     private RecyclerView mContentRecyclerView;
     private ArrayList<String> photos;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
+    private ActionBarDrawerToggle toggle;
 
     @Override
     protected void initViewsAndEvents() {
@@ -58,16 +61,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-    private void initContentRecyclerView() {
-        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mContentRecyclerView.setLayoutManager(manager);
-        mContentRecyclerView.setHasFixedSize(true);
+    private void getAllOperatorById(final long parent_id) {
         Observable.create(new Observable.OnSubscribe<List<alloperators>>() {
             @Override
             public void call(Subscriber<? super List<alloperators>> subscriber) {
                 try {
                     subscriber.onNext(DbUtil.getAllOperatorsService()
-                            .query("where operators_id=?", new String[]{String.valueOf(mList.get(0).getOuter_id())}));
+                            .query("where operators_id=?", new String[]{String.valueOf(parent_id)}));
                     subscriber.onCompleted();
                 } catch (Exception e) {
                     subscriber.onError(e);
@@ -87,48 +87,60 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
+    private void initContentRecyclerView() {
+        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mContentRecyclerView.setLayoutManager(manager);
+        mContentRecyclerView.setHasFixedSize(true);
+        getAllOperatorById(mList.get(0).getOuter_id());
+
+    }
+
     private void initContentAdapter() {
-        mContentAdapter = new BaseAdapter() {
-            @Override
-            protected void onBindView(BaseViewHolder holder, final int position) {
+        if (mContentAdapter == null) {
+            mContentAdapter = new BaseAdapter() {
+                @Override
+                protected void onBindView(BaseViewHolder holder, final int position) {
 
-                ImageView iv = holder.getView(R.id.item_content_iv);
-                TextView title = holder.getView(R.id.item_content_title);
-                TextView desc = holder.getView(R.id.item_content_desc);
-                title.setText(mContentLists.get(position).getName());
-                desc.setText(mContentLists.get(position).getDesc());
-                ImageLoader.getInstance().displayImage(mContentLists.get(position).getImg(), iv);
-                iv.setClickable(true);
-                iv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showImgFullScreen(position);
-                    }
-                });
-            }
+                    ImageView iv = holder.getView(R.id.item_content_iv);
+                    TextView title = holder.getView(R.id.item_content_title);
+                    TextView desc = holder.getView(R.id.item_content_desc);
+                    title.setText(mContentLists.get(position).getName());
+                    desc.setText(mContentLists.get(position).getDesc());
+                    ImageLoader.getInstance().displayImage(mContentLists.get(position).getImg(), iv);
+                    iv.setClickable(true);
+                    iv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            showImgFullScreen(position);
+                        }
+                    });
+                }
 
-            @Override
-            protected int getLayoutID(int position) {
-                return R.layout.item_index_content;
-            }
+                @Override
+                protected int getLayoutID(int position) {
+                    return R.layout.item_index_content;
+                }
 
-            @Override
-            public int getItemCount() {
-                return mContentLists.size();
-            }
-        };
-        mContentAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Bundle bundle = new Bundle();
-                bundle.putString(BaseWebActivity.BUNDLE_KEY_TITLE, mContentLists.get(position).getName());
-                bundle.putString(BaseWebActivity.BUNDLE_KEY_URL, mContentLists.get(position).getUrl());
-                bundle.putBoolean(BaseWebActivity.BUNDLE_KEY_SHOW_BOTTOM_BAR, true);
-                readyGo(BaseWebActivity.class, bundle);
+                @Override
+                public int getItemCount() {
+                    return mContentLists.size();
+                }
+            };
+            mContentAdapter.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(int position) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString(BaseWebActivity.BUNDLE_KEY_TITLE, mContentLists.get(position).getName());
+                    bundle.putString(BaseWebActivity.BUNDLE_KEY_URL, mContentLists.get(position).getUrl());
+                    bundle.putBoolean(BaseWebActivity.BUNDLE_KEY_SHOW_BOTTOM_BAR, true);
+                    readyGo(BaseWebActivity.class, bundle);
 
-            }
-        });
-        mContentRecyclerView.setAdapter(mContentAdapter);
+                }
+            });
+            mContentRecyclerView.setAdapter(mContentAdapter);
+        } else {
+            mContentAdapter.notifyDataSetChanged();
+        }
     }
 
     private void initNavRecycerView() {
@@ -185,7 +197,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                showToast(mNavRecyclerView, mList.get(position).getName());
+
+                getAllOperatorById(mList.get(position).getOuter_id());
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
             }
         });
         mNavRecyclerView.setAdapter(mAdapter);
@@ -198,13 +214,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initNavigationView() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         mHeadView = (LinearLayout) navigationView.getHeaderView(0);
         mNavRecyclerView = (RecyclerView) navigationView.getHeaderView(0).findViewById(R.id.index_nav_recycler);
@@ -220,7 +236,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
