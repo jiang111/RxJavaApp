@@ -31,8 +31,6 @@ import android.view.ViewGroup;
 
 import java.lang.reflect.Field;
 
-import butterknife.ButterKnife;
-
 /**
  * Author:  Tau.Chen
  * Email:   1076559197@qq.com | tauchen1990@gmail.com
@@ -82,7 +80,6 @@ public abstract class BaseLazyFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
 
         initViewsAndEvents();
     }
@@ -90,7 +87,7 @@ public abstract class BaseLazyFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+
     }
 
     @Override

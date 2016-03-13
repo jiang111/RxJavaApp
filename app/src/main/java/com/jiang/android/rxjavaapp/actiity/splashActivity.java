@@ -5,17 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.ImageView;
 
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.jiang.android.rxjavaapp.InitDataService;
 import com.jiang.android.rxjavaapp.R;
 import com.jiang.android.rxjavaapp.common.CommonString;
 import com.jiang.android.rxjavaapp.common.SPKey;
 import com.jiang.android.rxjavaapp.utils.SharePrefUtil;
-import com.jiang.android.rxjavaapp.utils.Utils;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -24,8 +22,7 @@ import butterknife.ButterKnife;
 public class splashActivity extends Activity {
 
 
-    @Bind(R.id.splash_index)
-    SimpleDraweeView mSplashIndex;
+    ImageView mSplashIndex;
 
     private AlphaAnimation animation;
 
@@ -33,12 +30,12 @@ public class splashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewLayoutID());
-        ButterKnife.bind(this);
+        mSplashIndex = (ImageView) findViewById(R.id.splash_index);
         initViewsAndEvents();
     }
 
     protected void initViewsAndEvents() {
-        mSplashIndex.setImageURI(Utils.getUri(CommonString.SPLASH_INDEX_URL));
+        ImageLoader.getInstance().displayImage(CommonString.SPLASH_INDEX_URL, mSplashIndex);
         animation = new AlphaAnimation(0, 1.0f);
         animation.setDuration(3 * 1000);
         animation.setFillAfter(true);
@@ -64,11 +61,6 @@ public class splashActivity extends Activity {
         });
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ButterKnife.unbind(this);
-    }
 
     @Override
     protected void onResume() {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/item_content_iv"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"
+        tools:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/item_content_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/item_content_iv"
+        android:layout_toRightOf="@+id/item_content_iv"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        tools:text="Combin" />
+
+    <TextView
+        android:id="@+id/item_content_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_content_title"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/item_content_iv"
+        android:maxLines="2"
+        android:textSize="14sp"
+        tools:text="对序列的每一项都应用一个函数来变换Observable发射的数据序列" />
+
+</RelativeLayout>

@@ -31,13 +31,13 @@ package com.jiang.android.rxjavaapp.common;
 /**
  * Created by jiang on 16/3/13.
  */
-public class CommonString {
-    public static final String SPLASH_INDEX_URL = "http://s7.51cto.com/wyfs02/M01/71/AC/wKiom1XWiPSQ-3r1AABXHna6t3c411.jpg";
+public class OperatorsUrl {
+
+    public static final String INTRODUCE = "https://github.com/mcxiaoke/RxDocs/blob/master/Intro.md";
 
 
-    public static final String GITHUB_URL = "https://github.com/jiang111/RxJavaApp";
-
-
-    public static final String OBSERVABLES = "https://github.com/mcxiaoke/RxDocs/raw/master/images/legend.png";
-    public static final String SUBJECT = "https://github.com/mcxiaoke/RxDocs/raw/master/images/S.AsyncSubject.png";
+    public static final String OBSERVABLES = "https://github.com/mcxiaoke/RxDocs/blob/master/Observables.md";
+    public static final String SINGLE = "https://github.com/mcxiaoke/RxDocs/blob/master/Single.md";
+    public static final String SUBJECT = "https://github.com/mcxiaoke/RxDocs/blob/master/Subject.md";
+    public static final String SCHEDULE = "https://github.com/mcxiaoke/RxDocs/blob/master/Scheduler.md";
 }

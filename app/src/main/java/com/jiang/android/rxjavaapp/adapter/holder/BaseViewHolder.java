@@ -1,6 +1,6 @@
 /**
- * created by jiang, 16/3/13
- * Copyright (c) 2016, jyuesong@gmail.com All Rights Reserved.
+ * created by jiang, 12/3/15
+ * Copyright (c) 2015, jyuesong@gmail.com All Rights Reserved.
  * *                #                                                   #
  * #                       _oo0oo_                     #
  * #                      o8888888o                    #
@@ -26,18 +26,47 @@
  * #                                                   #
  */
 
-package com.jiang.android.rxjavaapp.common;
+package com.jiang.android.rxjavaapp.adapter.holder;
+
+import android.support.annotation.IdRes;
+import android.support.v7.widget.RecyclerView;
+import android.util.SparseArray;
+import android.view.View;
 
 /**
- * Created by jiang on 16/3/13.
+ * Created by jiang on 12/3/15.
  */
-public class CommonString {
-    public static final String SPLASH_INDEX_URL = "http://s7.51cto.com/wyfs02/M01/71/AC/wKiom1XWiPSQ-3r1AABXHna6t3c411.jpg";
+public class BaseViewHolder extends RecyclerView.ViewHolder {
+
+    protected final SparseArray<View> mViews;
+    protected View mConvertView;
 
 
-    public static final String GITHUB_URL = "https://github.com/jiang111/RxJavaApp";
+    public BaseViewHolder(View itemView) {
+        super(itemView);
+        mViews = new SparseArray<>();
+        mConvertView = itemView;
+    }
 
 
-    public static final String OBSERVABLES = "https://github.com/mcxiaoke/RxDocs/raw/master/images/legend.png";
-    public static final String SUBJECT = "https://github.com/mcxiaoke/RxDocs/raw/master/images/S.AsyncSubject.png";
+    /**
+     * 通过控件的Id获取对应的控件，如果没有则加入mViews，则从item根控件中查找并保存到mViews中
+     *
+     * @param viewId
+     * @return
+     */
+    public <T extends View> T getView(@IdRes int viewId) {
+        View view = mViews.get(viewId);
+        if (view == null) {
+            view = mConvertView.findViewById(viewId);
+            mViews.put(viewId, view);
+        }
+        return (T) view;
+    }
+
+    public View getmConvertView() {
+        return mConvertView;
+    }
+
+
 }

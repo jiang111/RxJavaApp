@@ -29,21 +29,12 @@
 package com.jiang.android.rxjavaapp.base;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-
-import com.jiang.android.rxjavaapp.utils.SmartBarUtils;
-import com.readystatesoftware.systembartint.SystemBarTintManager;
-
-import butterknife.ButterKnife;
 
 /**
  * Created by jiang on 16/3/13.
@@ -53,9 +44,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // base setup
-        SmartBarUtils.hide(getWindow().getDecorView());
-        setTranslucentStatus(isApplyStatusBarTranslucency());
         BaseAppManager.getInstance().addActivity(this);
 
         Bundle extras = getIntent().getExtras();
@@ -71,22 +59,21 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    protected void getBundleExtras(Bundle extras){};
+    protected void getBundleExtras(Bundle extras) {
+    }
+
+    ;
 
     protected abstract boolean isApplyStatusBarTranslucency();
 
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
-        ButterKnife.bind(this);
+
 
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ButterKnife.unbind(this);
-    }
+
 
     @Override
     public void finish() {
@@ -180,44 +167,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         //防止遮盖虚拟按键
         if (null != msg && !TextUtils.isEmpty(msg)) {
             Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show();
-        }
-    }
-
-    /**
-     * use SytemBarTintManager
-     *
-     * @param tintDrawable
-     */
-    protected void setSystemBarTintDrawable(Drawable tintDrawable) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            SystemBarTintManager mTintManager = new SystemBarTintManager(this);
-            if (tintDrawable != null) {
-                mTintManager.setStatusBarTintEnabled(true);
-                mTintManager.setTintDrawable(tintDrawable);
-            } else {
-                mTintManager.setStatusBarTintEnabled(false);
-                mTintManager.setTintDrawable(null);
-            }
-        }
-
-    }
-
-    /**
-     * set status bar translucency
-     *
-     * @param on
-     */
-    protected void setTranslucentStatus(boolean on) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window win = getWindow();
-            WindowManager.LayoutParams winParams = win.getAttributes();
-            final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-            if (on) {
-                winParams.flags |= bits;
-            } else {
-                winParams.flags &= ~bits;
-            }
-            win.setAttributes(winParams);
         }
     }
 

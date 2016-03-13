@@ -10,31 +10,25 @@
     <application
         android:name=".App"
         android:allowBackup="true"
+        android:configChanges="orientation|keyboardHidden|screenSize"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".actiity.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".actiity.MainActivity"></activity>
         <activity
             android:name=".actiity.splashActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_splash"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".base.BaseWebActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity android:name=".base.BaseWebActivity" />
+        <activity android:name=".actiity.PhotoPagerActivity" />
         <service android:name=".InitDataService" />
     </application>
 
