@@ -27,12 +27,6 @@ public class PhotoPagerActivity extends BaseActivity {
         viewPager.setAdapter(new SamplePagerAdapter());
         viewPager.setCurrentItem(position);
     }
-
-    @Override
-    protected boolean isApplyStatusBarTranslucency() {
-        return false;
-    }
-
     @Override
     protected void initViewsAndEvents() {
         viewPager = (HackyViewPager) findViewById(R.id.photo_view_pager);

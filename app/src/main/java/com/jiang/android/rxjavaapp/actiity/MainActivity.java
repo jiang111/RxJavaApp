@@ -50,11 +50,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ArrayList<String> photos;
 
     @Override
-    protected boolean isApplyStatusBarTranslucency() {
-        return true;
-    }
-
-    @Override
     protected void initViewsAndEvents() {
         initToolBar();
         initNavigationView();

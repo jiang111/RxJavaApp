@@ -4,7 +4,7 @@ package com.jiang.android.rxjavaapp.base;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.MenuItem;
+import android.view.View;
 
 import com.jiang.android.rxjavaapp.R;
 import com.jiang.android.rxjavaapp.widget.BrowserLayout;
@@ -43,19 +43,14 @@ public class BaseWebActivity extends BaseActivity {
 
         if (null != mToolBar) {
             setSupportActionBar(mToolBar);
-            mToolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    switch (item.getItemId()) {
-                        case android.R.id.home:
-                            finish();
-                            break;
-                    }
-                    return true;
-                }
-            });
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    BaseWebActivity.this.finish();
+                }
+            });
         }
 
         if (!TextUtils.isEmpty(mWebTitle)) {
@@ -77,9 +72,4 @@ public class BaseWebActivity extends BaseActivity {
         }
     }
 
-
-    @Override
-    protected boolean isApplyStatusBarTranslucency() {
-        return true;
-    }
 }

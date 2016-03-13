@@ -62,10 +62,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void getBundleExtras(Bundle extras) {
     }
 
-    ;
-
-    protected abstract boolean isApplyStatusBarTranslucency();
-
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
