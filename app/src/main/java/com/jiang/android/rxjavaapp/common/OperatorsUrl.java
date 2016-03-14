@@ -134,5 +134,46 @@ public class OperatorsUrl {
     public static final String join = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/Sum.md";
     public static final String split = FLATMAP;
     public static final String stringConcat = join;
+    //conditional
+    public static final String amb = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/Conditional.md";
 
+    //boolean
+    public static final String BOOLEAN_ALL = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/Conditional.md";
+    public static final String MATH = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/Mathematical.md#Average";
+
+    // math other
+    public static final String concat = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/Mathematical.md#Concat";
+    public static final String count = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/Mathematical.md#Concat";
+    public static final String reduce = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/Mathematical.md#Concat";
+    public static final String collect = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/Mathematical.md#Concat";
+    public static final String toList = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/To.md";
+    public static final String toSortedList = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/To.md";
+    public static final String toMap = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/To.md";
+    public static final String toMultiMap = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/To.md";
+    public static final String SAMPLE_FIRST = "https://github.com/mcxiaoke/RxDocs/blob/master/topics/How-To-Use-RxJava.md";
+    public static final String GUIDE_OPEN = "https://github.com/mcxiaoke/RxDocs/blob/master/topics/Getting-Started.md";
+    public static final String OWN_OPERATE = "https://github.com/mcxiaoke/RxDocs/blob/master/topics/Implementing-Your-Own-Operators.md";
+    public static final String OWN_CHAJIAN = "https://github.com/mcxiaoke/RxDocs/blob/master/topics/Plugins.md";
+    public static final String ANDROID_MODULE = "https://github.com/mcxiaoke/RxDocs/blob/master/topics/The-RxJava-Android-Module.md";
+    
+    public static final String ERROR_HANDLE = "https://github.com/mcxiaoke/RxDocs/blob/master/topics/Error-Handling.md";
+    public static String start = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/Start.md#start";
+    //connect
+    public static String connect = "https://github.com/mcxiaoke/RxDocs/blob/master/operators/Connect.md";
+    public static String publish="https://github.com/mcxiaoke/RxDocs/blob/master/operators/Publish.md";
+    public static String replay="https://github.com/mcxiaoke/RxDocs/blob/master/operators/Replay.md";
+    public static String refCount="https://github.com/mcxiaoke/RxDocs/blob/master/operators/Refcount.md";
+    //block
+    public static String forEach="https://github.com/mcxiaoke/RxDocs/blob/master/operators/Subscribe.md";
+    public static String first="https://github.com/mcxiaoke/RxDocs/blob/master/operators/First.md";
+    public static String firstOrDefault="https://github.com/mcxiaoke/RxDocs/blob/master/operators/First.md";
+    public static String lastOrDefault="https://github.com/mcxiaoke/RxDocs/blob/master/operators/Last.md";
+    public static String mostRecent="https://github.com/mcxiaoke/RxDocs/blob/master/operators/First.md";
+    public static String next="https://github.com/mcxiaoke/RxDocs/blob/master/operators/TakeLast.md";
+    public static String single="https://github.com/mcxiaoke/RxDocs/blob/master/operators/First.md";
+    public static String singleOrDefault="https://github.com/mcxiaoke/RxDocs/blob/master/operators/First.md";
+    public static String toFuture="https://github.com/mcxiaoke/RxDocs/blob/master/operators/To.md";
+    public static String toIterable="https://github.com/mcxiaoke/RxDocs/blob/master/operators/To.md";
+    public static String getIterator="https://github.com/mcxiaoke/RxDocs/blob/master/operators/To.md";
+    public static String last="https://github.com/mcxiaoke/RxDocs/blob/master/operators/Last.md";
 }

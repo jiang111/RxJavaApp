@@ -16,11 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".actiity.MainActivity" />
-
         <activity android:name=".base.BaseWebActivity" />
         <activity android:name=".actiity.PhotoPagerActivity" />
-
-
         <activity android:name=".actiity.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

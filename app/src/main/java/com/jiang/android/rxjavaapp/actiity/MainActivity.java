@@ -1,5 +1,6 @@
 package com.jiang.android.rxjavaapp.actiity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,7 +31,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.greenrobot.event.EventBus;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -53,18 +54,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
 
-    public void onEventMainThread(int center) {
-        if (center == 1) {
-            initToolBar();
-            initNavigationView();
-            initNavRecycerView();
-            mContentRecyclerView = (RecyclerView) findViewById(R.id.id_content);
-        }
-    }
 
     @Override
     protected void initViewsAndEvents() {
-        EventBus.getDefault().register(this);
         initToolBar();
         initNavigationView();
         initNavRecycerView();
@@ -257,17 +249,39 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.about:
+                Bundle bundle = new Bundle();
+                bundle.putString(BaseWebActivity.BUNDLE_KEY_URL, "https://github.com/jiang111?tab=repositories");
+                bundle.putString(BaseWebActivity.BUNDLE_KEY_TITLE, "关于");
+                bundle.putBoolean(BaseWebActivity.BUNDLE_KEY_SHOW_BOTTOM_BAR, true);
+                readyGo(BaseWebActivity.class, bundle);
+                break;
+            case R.id.share:
+                shareText(item.getActionView());
+                break;
+        }
 
+
+        return super.onOptionsItemSelected(item);
+    }
+    public void shareText(View view) {
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Hi,我正在学习RxJava,推荐你下载这个app一起学习吧 https://github.com/jiang111/RxJavaApp/releases");
+        shareIntent.setType("text/plain");
+        startActivity(Intent.createChooser(shareIntent, "分享到"));
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

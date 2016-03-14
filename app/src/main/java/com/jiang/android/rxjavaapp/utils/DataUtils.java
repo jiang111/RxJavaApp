@@ -82,25 +82,24 @@ public class DataUtils {
 
     public static List<operators> getOperatorsData() {
         List<operators> lists = new ArrayList<>();
-        lists.add(new operators(1l, "RxJava介绍", 1l));
-        lists.add(new operators(2l, "Creating", 2l));
-        lists.add(new operators(3l, "Transforming", 3l));
-        lists.add(new operators(4l, "Filtering", 4l));
-        lists.add(new operators(5l, "Combining", 5l));
-        lists.add(new operators(6l, "Error Handling", 6l));
-        lists.add(new operators(7l, "Utility", 7l));
-        lists.add(new operators(8l, "Conditional", 8l));
-        lists.add(new operators(9l, "Mathematical", 9l));
-        lists.add(new operators(10l, "Async", 10l));
-        lists.add(new operators(11l, "Connect", 11l));
-        lists.add(new operators(12l, "Convert", 12l));
-        lists.add(new operators(13l, "Blocking", 13l));
-        lists.add(new operators(14l, "String", 14l));
+        lists.add(new operators(1l, "RxJava 介绍", 1l));
+        lists.add(new operators(2l, "Creating 创建操作", 2l));
+        lists.add(new operators(3l, "Transforming 变换操作", 3l));
+        lists.add(new operators(4l, "Filtering 过滤操作", 4l));
+        lists.add(new operators(5l, "Combining 结合操作", 5l));
+        lists.add(new operators(6l, "Error Handling 错误处理", 6l));
+        lists.add(new operators(7l, "Utility 辅助操作", 7l));
+        lists.add(new operators(8l, "Conditional 条件和布尔操作", 8l));
+        lists.add(new operators(9l, "Mathematical 算术和聚合操作", 9l));
+        lists.add(new operators(10l, "Async 异步操作", 10l));
+        lists.add(new operators(11l, "Connect 连接操作", 11l));
+        lists.add(new operators(12l, "Blocking 阻塞操作", 12l));
+        lists.add(new operators(13l, "String 字符串操作", 13l));
+        lists.add(new operators(14l, "其他的相关操作", 14l));
         return lists;
     }
 
     public static List<alloperators> getAllOperators() {
-
         List<alloperators> alloperatorses = new ArrayList<>();
         getIntroduceList(alloperatorses);
         getCreatingList(alloperatorses);
@@ -109,11 +108,31 @@ public class DataUtils {
         getCombinList(alloperatorses);
         getErrorList(alloperatorses);
         getUtilityList(alloperatorses);
+        getConditionalList(alloperatorses);
+        getMathList(alloperatorses);
+        getSayncList(alloperatorses);
+        getConnectList(alloperatorses);
+        getBlockList(alloperatorses);
         getStringList(alloperatorses);
+        getOthersList(alloperatorses);
         return alloperatorses;
     }
 
+    private static void getOthersList(List<alloperators> alloperatorses) {
+        alloperatorses.add(new alloperators(i++, "实现自己的操作符", "实现自己的操作符", CommonString.SPLASH_INDEX_URL, OperatorsUrl.OWN_OPERATE, parentId));
+        alloperatorses.add(new alloperators(i++, "自定义插件", "自定义插件", CommonString.SPLASH_INDEX_URL, OperatorsUrl.OWN_CHAJIAN, parentId));
+        alloperatorses.add(new alloperators(i++, "Android模块", "Android模块", CommonString.SPLASH_INDEX_URL, OperatorsUrl.ANDROID_MODULE, parentId));
+        alloperatorses.add(new alloperators(i++, "错误处理", "错误处理", CommonString.SPLASH_INDEX_URL, OperatorsUrl.ERROR_HANDLE, parentId));
 
+        parentId++;
+    }
+
+
+    /**
+     * string 操作符
+     *
+     * @param alloperatorses
+     */
     private static void getStringList(List<alloperators> alloperatorses) {
         alloperatorses.add(new alloperators(i++, "byLine()", "将一个字符串的Observable转换为一个行序列的Observable，这个Observable将原来的序列当做流处理，然后按换行符分割", CommonString.byLine, OperatorsUrl.byLine, parentId));
         alloperatorses.add(new alloperators(i++, "decode()", "将一个多字节的字符流转换为一个Observable，它按字符边界发射字节数组", CommonString.decode, OperatorsUrl.decode, parentId));
@@ -123,6 +142,79 @@ public class DataUtils {
         alloperatorses.add(new alloperators(i++, "split()", "将一个发射字符串的Observable转换为另一个发射字符串的Observable，后者使用一个指定的正则表达式边界分割前者发射的所有字符串", CommonString.split, OperatorsUrl.split, parentId));
         alloperatorses.add(new alloperators(i++, "stringConcat()", "将一个发射字符串序列的Observable转换为一个发射单个字符串的Observable，后者连接前者发射的所有字符串", CommonString.stringConcat, OperatorsUrl.stringConcat, parentId));
         parentId++;
+    }
+
+
+    private static void getBlockList(List<alloperators> alloperatorses) {
+        alloperatorses.add(new alloperators(i++, "forEach()", "对Observable发射的每一项数据调用一个方法，会阻塞直到Observable完成", CommonString.forEach, OperatorsUrl.forEach, parentId));
+        alloperatorses.add(new alloperators(i++, "first()", "阻塞直到Observable发射了一个数据，然后返回第一项数据", CommonString.first, OperatorsUrl.first, parentId));
+        alloperatorses.add(new alloperators(i++, "firstOrDefault()", "阻塞直到Observable发射了一个数据或者终止，返回第一项数据，或者返回默认值", CommonString.firstOrDefault, OperatorsUrl.firstOrDefault, parentId));
+        alloperatorses.add(new alloperators(i++, "last()", "阻塞直到Observable终止，然后返回最后一项数据", CommonString.last, OperatorsUrl.last, parentId));
+        alloperatorses.add(new alloperators(i++, "lastOrDefault()", " 阻塞直到Observable终止，然后返回最后一项的数据，或者返回默认值", CommonString.lastOrDefault, OperatorsUrl.lastOrDefault, parentId));
+        alloperatorses.add(new alloperators(i++, "mostRecent()", "返回一个总是返回Observable最近发射的数据的iterable", CommonString.mostRecent, OperatorsUrl.mostRecent, parentId));
+        alloperatorses.add(new alloperators(i++, "next()", "返回一个Iterable，会阻塞直到Observable发射了另一个值，然后返回那个值", CommonString.next, OperatorsUrl.next, parentId));
+        alloperatorses.add(new alloperators(i++, "single()", " 如果Observable终止时只发射了一个值，返回那个值，否则抛出异常", CommonString.single, OperatorsUrl.single, parentId));
+        alloperatorses.add(new alloperators(i++, "singleOrDefault()", "如果Observable终止时只发射了一个值，返回那个值，否则否好默认值", CommonString.singleOrDefault, OperatorsUrl.singleOrDefault, parentId));
+        alloperatorses.add(new alloperators(i++, "toFuture()", "将Observable转换为一个Future", CommonString.toFuture, OperatorsUrl.toFuture, parentId));
+        alloperatorses.add(new alloperators(i++, "toIterable()", "将一个发射数据序列的Observable转换为一个Iterable", CommonString.toIterable, OperatorsUrl.toIterable, parentId));
+        alloperatorses.add(new alloperators(i++, "getIterator()", " 将一个发射数据序列的Observable转换为一个Iterator", CommonString.getIterator, OperatorsUrl.getIterator, parentId));
+
+        parentId++;
+    }
+
+    private static void getConnectList(List<alloperators> alloperatorses) {
+        alloperatorses.add(new alloperators(i++, "ConnectableObservable.connect()", "指示一个可连接的Observable开始发射数据", CommonString.connect, OperatorsUrl.connect, parentId));
+        alloperatorses.add(new alloperators(i++, "ConnectableObservable.publish()", "将一个Observable转换为一个可连接的Observable", CommonString.publish, OperatorsUrl.publish, parentId));
+        alloperatorses.add(new alloperators(i++, "ConnectableObservable.replay()", "确保所有的订阅者看到相同的数据序列，即使它们在Observable开始发射数据之后才订阅", CommonString.replay, OperatorsUrl.replay, parentId));
+        alloperatorses.add(new alloperators(i++, "ConnectableObservable.refCount()", "让一个可连接的Observable表现得像一个普通的Observable", CommonString.refCount, OperatorsUrl.refCount, parentId));
+        parentId++;
+    }
+
+
+    private static void getSayncList(List<alloperators> alloperatorses) {
+        alloperatorses.add(new alloperators(i++, "start()", "创建一个Observable，它发射一个函数的返回值", CommonString.start, OperatorsUrl.start, parentId));
+        alloperatorses.add(new alloperators(i++, "toAsync() or asyncAction() or asyncFunc()", " 将一个函数或者Action转换为已Observable，它执行这个函数并发射函数的返回值", CommonString.toAsync, OperatorsUrl.start, parentId));
+        alloperatorses.add(new alloperators(i++, "startFuture()", "将一个返回Future的函数转换为一个Observable，它发射Future的返回值", CommonString.startFuture, OperatorsUrl.start, parentId));
+        alloperatorses.add(new alloperators(i++, "deferFuture()", "将一个返回Observable的Future转换为一个Observable，但是并不尝试获取这个Future返回的Observable，直到有订阅者订阅它", CommonString.deferFuture, OperatorsUrl.start, parentId));
+        alloperatorses.add(new alloperators(i++, "forEachFuture()", "传递Subscriber方法给一个Subscriber，但是同时表现得像一个Future一样阻塞直到它完成", CommonString.forEachFuture, OperatorsUrl.start, parentId));
+        alloperatorses.add(new alloperators(i++, "fromAction()", "将一个Action转换为Observable，当一个订阅者订阅时，它执行这个action并发射它的返回值", CommonString.fromAction, OperatorsUrl.start, parentId));
+        alloperatorses.add(new alloperators(i++, "fromCallable()", "将一个Callable转换为Observable，当一个订阅者订阅时，它执行这个Callable并发射Callable的返回值，或者发射异常", CommonString.fromCallable, OperatorsUrl.start, parentId));
+        alloperatorses.add(new alloperators(i++, "fromRunnable()", "convert a Runnable into an Observable that invokes the runable and emits its result when a Subscriber subscribes将一个Runnable转换为Observable，当一个订阅者订阅时，它执行这个Runnable并发射Runnable的返回值", CommonString.fromRunnable, OperatorsUrl.start, parentId));
+        alloperatorses.add(new alloperators(i++, "runAsync()", "返回一个StoppableObservable，它发射某个Scheduler上指定的Action生成的多个actions", CommonString.runAsync, OperatorsUrl.start, parentId));
+        parentId++;
+    }
+
+    private static void getMathList(List<alloperators> alloperatorses) {
+        alloperatorses.add(new alloperators(i++, "rxjava-math模块", "模块的操作符", CommonString.MATH, OperatorsUrl.MATH, parentId));
+        alloperatorses.add(new alloperators(i++, "concat()", "顺序连接多个Observables", CommonString.concat, OperatorsUrl.concat, parentId));
+        alloperatorses.add(new alloperators(i++, "count() and countLong()", "计算数据项的个数并发射结果", CommonString.count, OperatorsUrl.count, parentId));
+        alloperatorses.add(new alloperators(i++, "reduce()", "对序列使用reduce()函数并发射对吼的结果", CommonString.reduce, OperatorsUrl.reduce, parentId));
+        alloperatorses.add(new alloperators(i++, "collect()", "将原始Observable发射的数据放到一个单一的可变的数据结构中，然后返回一个发射这个数据结构的Observable", CommonString.collect, OperatorsUrl.collect, parentId));
+        alloperatorses.add(new alloperators(i++, "toList()", "收集原始Observable发射的所有数据到一个列表，然后返回这个列表", CommonString.toList, OperatorsUrl.toList, parentId));
+        alloperatorses.add(new alloperators(i++, "toSortedList()", "收集原始Observable发射的所有数据到一个有序列表，然后返回这个列表", CommonString.toSortedList, OperatorsUrl.toSortedList, parentId));
+        alloperatorses.add(new alloperators(i++, "toMap()", "将序列数据转换为一个Map，Map的key是根据一个函数计算的", CommonString.toMap, OperatorsUrl.toMap, parentId));
+        alloperatorses.add(new alloperators(i++, "toMultiMap()", "将序列数据转换为一个列表，同时也是一个Map，Map的key是根据一个函数计算的", CommonString.toMultiMap, OperatorsUrl.toMultiMap, parentId));
+        parentId++;
+    }
+
+    private static void getConditionalList(List<alloperators> alloperatorses) {
+        alloperatorses.add(new alloperators(i++, "amb()", "给定多个Observable，只让第一个发射数据的Observable发射全部数据", CommonString.amb, OperatorsUrl.amb, parentId));
+        alloperatorses.add(new alloperators(i++, "defaultIfEmpty()", "发射来自原始Observable的数据，如果原始Observable没有发射数据，就发射一个默认数据", CommonString.defaultIfEmpty, OperatorsUrl.amb, parentId));
+        alloperatorses.add(new alloperators(i++, "doWhile()", "发射原始Observable的数据序列，然后重复发射这个序列直到不满足这个条件为止", CommonString.doWhile, OperatorsUrl.amb, parentId));
+        alloperatorses.add(new alloperators(i++, "ifThen()", "只有当某个条件为真时才发射原始Observable的数据序列，否则发射一个空的或默认的序列", CommonString.ifThen, OperatorsUrl.amb, parentId));
+        alloperatorses.add(new alloperators(i++, "skipUntil()", "丢弃原始Observable发射的数据，直到第二个Observable发射了一个数据，然后发射原始Observable的剩余数据", CommonString.skipUntil, OperatorsUrl.amb, parentId));
+        alloperatorses.add(new alloperators(i++, "skipWhile()", "丢弃原始Observable发射的数据，直到一个特定的条件为假，然后发射原始Observable剩余的数据", CommonString.skipWhile, OperatorsUrl.amb, parentId));
+        alloperatorses.add(new alloperators(i++, "switchCase()", "基于一个计算结果，发射一个指定Observable的数据序列", CommonString.switchCase, OperatorsUrl.amb, parentId));
+        alloperatorses.add(new alloperators(i++, "takeUntil()", "发射来自原始Observable的数据，直到第二个Observable发射了一个数据或一个通知", CommonString.takeUntil, OperatorsUrl.amb, parentId));
+        alloperatorses.add(new alloperators(i++, "takeWhile(),takeWhileWithIndex()", "射原始Observable的数据，直到一个特定的条件为真，然后跳过剩余的数据", CommonString.takeWhile, OperatorsUrl.amb, parentId));
+        alloperatorses.add(new alloperators(i++, "whileDo()", "if a condition is true, emit the source Observable's sequence and then repeat the sequence as long as the condition remains true如果满足一个条件，发射原始Observable的数据，然后重复发射直到不满足这个条件为止", CommonString.takeWhile, CommonString.GITHUB_URL, parentId));
+
+        alloperatorses.add(new alloperators(i++, "all()", "判断是否所有的数据项都满足某个条件", CommonString.all, OperatorsUrl.BOOLEAN_ALL, parentId));
+        alloperatorses.add(new alloperators(i++, "contains()", "判断Observable是否会发射一个指定的值", CommonString.contains, OperatorsUrl.BOOLEAN_ALL, parentId));
+        alloperatorses.add(new alloperators(i++, "exists(),isEmpty()", "判断Observable是否发射了一个值", CommonString.exists, OperatorsUrl.BOOLEAN_ALL, parentId));
+        alloperatorses.add(new alloperators(i++, "sequenceEqual()", " test the equality of the sequences emitted by two Observables判断两个Observables发射的序列是否相等", CommonString.sequenceEqual, OperatorsUrl.BOOLEAN_ALL, parentId));
+        parentId++;
+
     }
 
 
@@ -174,6 +266,8 @@ public class DataUtils {
 
     private static void getIntroduceList(List<alloperators> alloperatorses) {
         alloperatorses.add(new alloperators(i++, "ReactiveX", "什么是Rx，Rx的理念和优势", CommonString.SPLASH_INDEX_URL, OperatorsUrl.INTRODUCE, parentId));
+        alloperatorses.add(new alloperators(i++, "RxJava入门指南", "RxJava入门指南", CommonString.SPLASH_INDEX_URL, OperatorsUrl.GUIDE_OPEN, parentId));
+        alloperatorses.add(new alloperators(i++, "RxJava使用示例", "RxJava使用示例", CommonString.SPLASH_INDEX_URL, OperatorsUrl.SAMPLE_FIRST, parentId));
         alloperatorses.add(new alloperators(i++, "Observables", "简要介绍Observable的观察者模型", CommonString.OBSERVABLES, OperatorsUrl.OBSERVABLES, parentId));
         alloperatorses.add(new alloperators(i++, "Single", "一种特殊的只发射单个值的Observable", CommonString.SPLASH_INDEX_URL, OperatorsUrl.SINGLE, parentId));
         alloperatorses.add(new alloperators(i++, "Subject", "Observable和Observer的复合体，也是二者的桥梁", CommonString.SUBJECT, OperatorsUrl.SUBJECT, parentId));

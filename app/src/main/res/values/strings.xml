@@ -10,4 +10,6 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="github">GitHub</string>
+    <string name="about">关于</string>
+    <string name="share">分享</string>
 </resources>

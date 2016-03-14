@@ -127,4 +127,65 @@ public class CommonString {
     public static final String split = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/St.split.png";
     public static final String stringConcat = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/sum.f.png";
 
+
+    //conditional
+    public static final String amb = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/amb.c.png";
+    public static final String defaultIfEmpty = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/defaultIfEmpty.c.png";
+    public static final String doWhile = amb;
+    public static final String ifThen = amb;
+    public static final String skipUntil = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/skipUntil.c.png";
+    public static final String skipWhile = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/skipWhile.c.png";
+    public static final String switchCase = amb;
+    public static final String takeUntil = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/takeUntil.png";
+    public static final String takeWhile = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/takeWhile.c.png";
+    public static final String whileDo = amb;
+
+    //bool
+    public static final String all = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/all.png";
+    public static final String contains = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/contains.png";
+    public static final String exists = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/exists.png";
+    public static final String sequenceEqual = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/sequenceEqual.png";
+
+    public static final String MATH = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/collect.png";
+
+
+    // math other
+    public static final String concat = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/concat.c.png";
+    public static final String count = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/count.c.png";
+    public static final String reduce = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/reduce.c.png";
+    public static final String collect = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/collect.png";
+    public static final String toList = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/toList.png";
+    public static final String toSortedList = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/toSortedList.png";
+    public static final String toMap = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/toMap.png";
+    public static final String toMultiMap = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/toMultiMap.png";
+
+    public static String start = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/start.png";
+    public static String toAsync = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/toAsync.png";
+    public static String startFuture = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/startFuture.png";
+    public static String deferFuture = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/deferFuture.png";
+    public static String forEachFuture = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/forEachFuture.png";
+    public static String fromAction = start;
+    public static String runAsync = start;
+    public static String fromRunnable = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/fromRunnable.png";
+    public static String fromCallable = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/fromCallable.png";
+
+    //connect
+    public static String connect = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/publishConnect.c.png";
+    public static String publish = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/publishConnect.c.png";
+    public static String replay = "https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/replay.c.png";
+    public static String refCount = replay;
+
+    //block
+    public static String forEach=EMPTY;
+    public static String first="https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/first.c.png";
+    public static String firstOrDefault="https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/firstOrDefault.png";
+    public static String last="https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/last.png";
+    public static String lastOrDefault="https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/lastOrDefault.png";
+    public static String mostRecent="https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/first.png";
+    public static String next="https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/takeLast.c.png";
+    public static String single="https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/single.p.png";
+    public static String singleOrDefault="https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/singleOrDefault.p.png";
+    public static String toFuture="https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/B.toFuture.png";
+    public static String toIterable="https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/B.getIterator.png";
+    public static String getIterator="https://github.com/mcxiaoke/RxDocs/raw/master/images/operators/B.getIterator.png";
 }
