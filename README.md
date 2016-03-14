@@ -7,3 +7,5 @@
 ![](https://raw.githubusercontent.com/jiang111/RxJavaApp/master/app/art/3.png)
 
 ![](https://raw.githubusercontent.com/jiang111/RxJavaApp/master/app/art/4.png)
+
+* app中用到的数据来自:https://github.com/mcxiaoke/RxDocs
