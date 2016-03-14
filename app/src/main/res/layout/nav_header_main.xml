@@ -32,12 +32,7 @@
             android:text="RxJava所有操作符的学习"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="https://github.com/jiang111/RxJavaApp" />
-    </LinearLayout>
+         </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/index_nav_recycler"
