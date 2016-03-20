@@ -1,4 +1,4 @@
-package com.jiang.android.rxjavaapp.actiity;
+package com.jiang.android.rxjavaapp.activity;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;

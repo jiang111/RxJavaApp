@@ -1,4 +1,4 @@
-package com.jiang.android.rxjavaapp.actiity;
+package com.jiang.android.rxjavaapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
