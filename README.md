@@ -1,5 +1,5 @@
 
-一个用于学习RxJava操作符的app
+用于学习RxJava操作符的app
 
 下载地址： fir.im <br />
 http://fir.im/bpdu
