@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,6 +46,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     RecyclerView mNavRecyclerView;
     BaseAdapter mAdapter;
     BaseAdapter mContentAdapter;
+    private int checkedPosition = 0;
 
     private List<operators> mList = new ArrayList<>();
     private List<alloperators> mContentLists = new ArrayList<>();
@@ -94,7 +96,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mContentRecyclerView.setLayoutManager(manager);
         mContentRecyclerView.setHasFixedSize(true);
-        getAllOperatorById(mList.get(0).getOuter_id());
+        if (mList != null && mList.size() > 0) {
+            getAllOperatorById(mList.get(0).getOuter_id());
+        }
 
     }
 
@@ -107,6 +111,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     ImageView iv = holder.getView(R.id.item_content_iv);
                     TextView title = holder.getView(R.id.item_content_title);
                     TextView desc = holder.getView(R.id.item_content_desc);
+                    TextView thread = holder.getView(R.id.item_content_thread);
+                    if (TextUtils.isEmpty(mContentLists.get(position).getThread())) {
+                        thread.setText("默认线程");
+                    } else {
+                        thread.setText(mContentLists.get(position).getThread());
+                    }
                     title.setText(mContentLists.get(position).getName());
                     desc.setText(mContentLists.get(position).getDesc());
                     ImageLoader.getInstance().displayImage(mContentLists.get(position).getImg(), iv);
@@ -191,6 +201,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             protected void onBindView(BaseViewHolder holder, int position) {
                 TextView tv = holder.getView(R.id.item_nav_head_v);
                 tv.setText(mList.get(position).getName());
+                if (position == checkedPosition) {
+                    tv.setBackgroundColor(getResources().getColor(R.color._eeeeee));
+                } else {
+                    tv.setBackgroundColor(getResources().getColor(R.color.white));
+                }
             }
 
             @Override
@@ -201,7 +216,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-
+                checkedPosition = position;
+                mAdapter.notifyDataSetChanged();
                 getAllOperatorById(mList.get(position).getOuter_id());
                 if (drawer.isDrawerOpen(GravityCompat.START)) {
                     drawer.closeDrawer(GravityCompat.START);

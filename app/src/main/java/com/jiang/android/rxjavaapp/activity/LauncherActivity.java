@@ -8,9 +8,8 @@ import android.widget.ImageView;
 
 import com.jiang.android.rxjavaapp.R;
 import com.jiang.android.rxjavaapp.common.CommonString;
-import com.jiang.android.rxjavaapp.common.SPKey;
+import com.jiang.android.rxjavaapp.database.helper.DbUtil;
 import com.jiang.android.rxjavaapp.utils.DataUtils;
-import com.jiang.android.rxjavaapp.utils.SharePrefUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class LauncherActivity extends AppCompatActivity {
@@ -29,11 +28,13 @@ public class LauncherActivity extends AppCompatActivity {
     }
 
     private void startAct() {
-        if (SharePrefUtil.getBoolean(this, SPKey.FIRST_ENTER, true)) {
+
+
+        long count = DbUtil.getOperatorsService().count();
+        if (count == 0) {
             DataUtils.fillData(new DataUtils.callBack() {
                 @Override
                 public void onSuccess() {
-                    SharePrefUtil.saveBoolean(LauncherActivity.this, SPKey.FIRST_ENTER, false);
                     startActivity(new Intent(LauncherActivity.this, MainActivity.class));
                     LauncherActivity.this.finish();
 

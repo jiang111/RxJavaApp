@@ -18,40 +18,40 @@ import de.greenrobot.dao.internal.DaoConfig;
  */
 public class DaoSession extends AbstractDaoSession {
 
-    private final DaoConfig alloperatorsDaoConfig;
     private final DaoConfig operatorsDaoConfig;
+    private final DaoConfig alloperatorsDaoConfig;
 
-    private final alloperatorsDao alloperatorsDao;
     private final operatorsDao operatorsDao;
+    private final alloperatorsDao alloperatorsDao;
 
     public DaoSession(SQLiteDatabase db, IdentityScopeType type, Map<Class<? extends AbstractDao<?, ?>>, DaoConfig>
             daoConfigMap) {
         super(db);
 
-        alloperatorsDaoConfig = daoConfigMap.get(alloperatorsDao.class).clone();
-        alloperatorsDaoConfig.initIdentityScope(type);
-
         operatorsDaoConfig = daoConfigMap.get(operatorsDao.class).clone();
         operatorsDaoConfig.initIdentityScope(type);
 
-        alloperatorsDao = new alloperatorsDao(alloperatorsDaoConfig, this);
-        operatorsDao = new operatorsDao(operatorsDaoConfig, this);
+        alloperatorsDaoConfig = daoConfigMap.get(alloperatorsDao.class).clone();
+        alloperatorsDaoConfig.initIdentityScope(type);
 
-        registerDao(alloperators.class, alloperatorsDao);
+        operatorsDao = new operatorsDao(operatorsDaoConfig, this);
+        alloperatorsDao = new alloperatorsDao(alloperatorsDaoConfig, this);
+
         registerDao(operators.class, operatorsDao);
+        registerDao(alloperators.class, alloperatorsDao);
     }
     
     public void clear() {
-        alloperatorsDaoConfig.getIdentityScope().clear();
         operatorsDaoConfig.getIdentityScope().clear();
-    }
-
-    public alloperatorsDao getAlloperatorsDao() {
-        return alloperatorsDao;
+        alloperatorsDaoConfig.getIdentityScope().clear();
     }
 
     public operatorsDao getOperatorsDao() {
         return operatorsDao;
+    }
+
+    public alloperatorsDao getAlloperatorsDao() {
+        return alloperatorsDao;
     }
 
 }

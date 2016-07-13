@@ -48,7 +48,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        DbCore.init(this);
+        DbCore.init(this,System.currentTimeMillis()+".db");
         initImageLoader(getApplicationContext());
     }
 

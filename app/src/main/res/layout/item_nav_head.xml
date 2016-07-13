@@ -4,9 +4,11 @@
           android:id="@+id/item_nav_head_v"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:background="@drawable/delector"
           android:gravity="left"
+          android:paddingBottom="10dp"
           android:paddingLeft="40dp"
-          android:paddingTop="15dp"
+          android:paddingTop="10dp"
           android:textSize="20sp"
           tools:text="Combing">
 
