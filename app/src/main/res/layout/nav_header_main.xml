@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="RxJava所有操作符的学习"
+            android:text="RxJava操作符"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
          </LinearLayout>
