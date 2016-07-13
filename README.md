@@ -5,7 +5,7 @@
 http://fir.im/bpdu
 
 或者直接在 Release里面下载 <br />
-https://github.com/jiang111/RxJavaApp/releases/tag/1.3
+https://github.com/jiang111/RxJavaApp/releases/tag/1.4
 
 时间仓促，如果各位看官发现有错误的话请提到issue
 
