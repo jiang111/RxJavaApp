@@ -142,6 +142,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             });
             mContentRecyclerView.setAdapter(mContentAdapter);
         } else {
+            mContentRecyclerView.getLayoutManager().scrollToPosition(0);
             mContentAdapter.notifyDataSetChanged();
         }
     }
@@ -275,6 +276,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         return super.onOptionsItemSelected(item);
     }
+
     public void shareText(View view) {
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
@@ -282,6 +284,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         shareIntent.setType("text/plain");
         startActivity(Intent.createChooser(shareIntent, "分享到"));
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

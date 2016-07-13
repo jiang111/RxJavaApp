@@ -83,18 +83,18 @@ public class DataUtils {
     public static List<operators> getOperatorsData() {
         List<operators> lists = new ArrayList<>();
         lists.add(new operators(1l, "RxJava 介绍", 1l));
-        lists.add(new operators(2l, "Creating 创建操作", 2l));
-        lists.add(new operators(3l, "Transforming 变换操作", 3l));
-        lists.add(new operators(4l, "Filtering 过滤操作", 4l));
-        lists.add(new operators(5l, "Combining 结合操作", 5l));
-        lists.add(new operators(6l, "Error Handling 错误处理", 6l));
-        lists.add(new operators(7l, "Utility 辅助操作", 7l));
-        lists.add(new operators(8l, "Conditional 条件和布尔操作", 8l));
-        lists.add(new operators(9l, "Mathematical 算术和聚合操作", 9l));
-        lists.add(new operators(10l, "Async 异步操作", 10l));
-        lists.add(new operators(11l, "Connect 连接操作", 11l));
-        lists.add(new operators(12l, "Blocking 阻塞操作", 12l));
-        lists.add(new operators(13l, "String 字符串操作", 13l));
+        lists.add(new operators(2l, "创建操作", 2l));
+        lists.add(new operators(3l, "变换操作", 3l));
+        lists.add(new operators(4l, "过滤操作", 4l));
+        lists.add(new operators(5l, "结合操作", 5l));
+        lists.add(new operators(6l, "错误处理", 6l));
+        lists.add(new operators(7l, "辅助操作", 7l));
+        lists.add(new operators(8l, "条件和布尔操作", 8l));
+        lists.add(new operators(9l, "算术和聚合操作", 9l));
+        lists.add(new operators(10l, "异步操作", 10l));
+        lists.add(new operators(11l, "连接操作", 11l));
+        lists.add(new operators(12l, "阻塞操作", 12l));
+        lists.add(new operators(13l, "字符串操作", 13l));
         lists.add(new operators(14l, "其他的相关操作", 14l));
         return lists;
     }
