@@ -1,5 +1,6 @@
 
-用于学习RxJava操作符的app,全新升级,更漂亮
+###学习RxJava操作符的APP
+全新升级,更漂亮
 
 ###展示:
 <img src="https://raw.githubusercontent.com/jiang111/RxJavaApp/master/app/art/1.png" width=270  alt="" />
@@ -15,10 +16,6 @@
 >* app中用到的数据来自:https://github.com/jiang111/RxDocs  fork自: https://github.com/mcxiaoke/RxDocs
 >* 介绍的操作符并不是全部操作符,大都是我们常用的,想要看全部操作符,请移步:http://reactivex.io/RxJava/javadoc/overview-summary.html
 >* 线程调度的一些说明可能不准确,如发现错误,欢迎提issue,我会及时更正过来
-
-###个人微信公众号:
-微信号:androidesigner <br />
-![](https://raw.githubusercontent.com/jiang111/wechat_article/master/qrcode.jpg)
 
 ###推荐
 >* 更好的管理线程间跳转的库 https://github.com/jiang111/ObservableScheduler
