@@ -1,6 +1,6 @@
 
 ###学习RxJava操作符的APP
-全新升级,更漂亮
+全新升级,更漂亮,更耐看
 
 ###展示:
 <img src="https://raw.githubusercontent.com/jiang111/RxJavaApp/master/app/art/1.png" width=270  alt="" />
