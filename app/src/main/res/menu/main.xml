@@ -11,4 +11,10 @@
         android:orderInCategory="100"
         android:title="@string/share"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/update"
+        android:orderInCategory="100"
+        android:title="@string/update"
+        app:showAsAction="never" />
+
 </menu>
