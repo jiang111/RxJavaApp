@@ -9,7 +9,7 @@
 
 ###下载地址
 >* fir.im <br />http://fir.im/bpdu
->* Release <br />https://github.com/jiang111/RxJavaApp/releases/tag/1.5
+>* Release <br />https://github.com/jiang111/RxJavaApp/releases/tag/1.6
 
 ###说明:
 >* Logo来源于网络
