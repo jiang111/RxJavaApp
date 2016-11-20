@@ -12,9 +12,9 @@
         android:title="@string/share"
         app:showAsAction="never" />
     <item
-        android:id="@+id/update"
+        android:id="@+id/mark"
         android:orderInCategory="100"
-        android:title="@string/update"
+        android:title="@string/mark"
         app:showAsAction="never" />
 
 </menu>

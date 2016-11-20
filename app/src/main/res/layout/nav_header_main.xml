@@ -11,28 +11,21 @@
         android:layout_height="@dimen/nav_header_height"
         android:background="@drawable/side_nav_bar"
         android:orientation="vertical"
+        android:gravity="center|left"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        android:paddingTop="@dimen/activity_vertical_margin">
 
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="100dp"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:src="@drawable/splash_large" />
+            android:src="@mipmap/ic_launcher" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="RxJava操作符"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-         </LinearLayout>
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/index_nav_recycler"

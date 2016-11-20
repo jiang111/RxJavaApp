@@ -32,7 +32,7 @@ package com.jiang.android.rxjavaapp.common;
  * Created by jiang on 16/3/13.
  */
 public class CommonString {
-    public static final String SPLASH_INDEX_URL = "http://s7.51cto.com/wyfs02/M01/71/AC/wKiom1XWiPSQ-3r1AABXHna6t3c411.jpg";
+    public static final String SPLASH_INDEX_URL = "https://raw.githubusercontent.com/jiang111/jiang111.github.io/master/images/rxjava_app_launcher.png";
     public static final String GITHUB_URL = "https://github.com/jiang111/RxJavaApp";
     public static final String OBSERVABLES = "https://github.com/jiang111/RxDocs/raw/master/images/legend.png";
     public static final String SUBJECT = "https://github.com/jiang111/RxDocs/raw/master/images/S.AsyncSubject.png";

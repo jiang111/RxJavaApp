@@ -1,13 +1,9 @@
 package com.jiang.android.rxjavaapp.activity;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -38,8 +34,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.hugeterry.updatefun.UpdateFunGO;
-import cn.hugeterry.updatefun.config.UpdateKey;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -72,9 +66,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         initNavigationView();
         initNavRecycerView();
         mContentRecyclerView = (RecyclerView) findViewById(R.id.id_content);
-        UpdateKey.API_TOKEN = "f9036183d93b6f419784ffa248302aef";
-        UpdateKey.APP_ID = "com.jiang.android.rxjavaapp";
-        localStorage();
+
 
     }
 
@@ -299,18 +291,29 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.share:
                 shareText(item.getActionView());
                 break;
-            case R.id.update:
-                UpdateFunGO.init(this);
+            case R.id.mark:
+                try {
+                    Intent viewIntent = new Intent("android.intent.action.VIEW",
+                            Uri.parse("market://details?id=" + getPackageName()));
+                    startActivity(viewIntent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    toast("手机未安装应用市场");
+                }
         }
 
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void toast(String str) {
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+    }
+
     public void shareText(View view) {
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, "Hi,我正在学习RxJava,推荐你下载这个app一起学习吧 https://github.com/jiang111/RxJavaApp/releases");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Hi,我正在学习RxJava,推荐你下载这个app一起学习吧 到应用商店或者https://github.com/jiang111/RxJavaApp/releases即可下载");
         shareIntent.setType("text/plain");
         startActivity(Intent.createChooser(shareIntent, "分享到"));
     }
@@ -346,36 +349,5 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        UpdateFunGO.onResume(this);
-    }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        UpdateFunGO.onStop(this);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_STORAGE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-            } else {
-                Toast.makeText(this, "权限被禁止,版本更新功能可能没办法使用", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-
-    private void localStorage() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    REQUEST_STORAGE);
-        }
-    }
 }
