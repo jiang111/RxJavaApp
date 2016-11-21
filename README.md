@@ -2,14 +2,17 @@
 ###学习RxJava操作符的APP
 全新升级,更漂亮,更耐看
 
+###已上线应用市场
+>* [应用宝下载](http://sj.qq.com/myapp/detail.htm?apkName=com.jiang.android.rxjavaapp)
+
 ###展示:
 <img src="https://raw.githubusercontent.com/jiang111/RxJavaApp/master/app/art/1.png" width=270  alt="" />
 <img src="https://raw.githubusercontent.com/jiang111/RxJavaApp/master/app/art/2.png" width=270  alt="" />
 <img src="https://raw.githubusercontent.com/jiang111/RxJavaApp/master/app/art/3.png" width=270  alt="" />
 
 ###下载地址
->* fir.im <br />http://fir.im/bpdu
->* Release <br />https://github.com/jiang111/RxJavaApp/releases/tag/1.6
+>* 应用宝 <br />http://sj.qq.com/myapp/detail.htm?apkName=com.jiang.android.rxjavaapp
+>* Release <br />https://github.com/jiang111/RxJavaApp/releases/tag/1.7
 
 ###说明:
 >* Logo来源于网络
