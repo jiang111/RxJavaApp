@@ -45,6 +45,7 @@ public class OperatorsUrl {
     public static final String REPEAT = "https://github.com/jiang111/RxDocs/blob/master/operators/Repeat.md";
     public static final String CREATE = "https://github.com/jiang111/RxDocs/blob/master/operators/Create.md";
     public static final String DEFER = "https://github.com/jiang111/RxDocs/blob/master/operators/Defer.md";
+    public static final String RANGE = "https://github.com/jiang111/RxDocs/blob/master/operators/Range.md";
     public static final String INTERVAL = "https://github.com/jiang111/RxDocs/blob/master/operators/Interval.md";
     public static final String TIMER = "https://github.com/jiang111/RxDocs/blob/master/operators/Timer.md";
     public static final String EMPTY = "https://github.com/jiang111/RxDocs/blob/master/operators/Empty.md";

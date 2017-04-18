@@ -285,7 +285,7 @@ public class DataUtils {
         alloperatorses.add(new alloperators(i++, "repeatWhen()", TRAMPOLINE, "创建一个重复发射指定数据或数据序列的Observable，它依赖于另一个Observable发射的数据", CommonString.REPEAT_WHEN, OperatorsUrl.REPEAT, parentId));
         alloperatorses.add(new alloperators(i++, "create()", DEFAULT, "使用一个函数从头创建一个Observable", CommonString.CREATE, OperatorsUrl.CREATE, parentId));
         alloperatorses.add(new alloperators(i++, "defer()", DEFAULT, "只有当订阅者订阅才创建Observable；为每个订阅创建一个新的Observable", CommonString.DEFER, OperatorsUrl.DEFER, parentId));
-        alloperatorses.add(new alloperators(i++, "range()", DEFAULT, "创建一个发射指定范围的整数序列的Observable", CommonString.RANGE, OperatorsUrl.DEFER, parentId));
+        alloperatorses.add(new alloperators(i++, "range()", DEFAULT, "创建一个发射指定范围的整数序列的Observable", CommonString.RANGE, OperatorsUrl.RANGE, parentId));
         alloperatorses.add(new alloperators(i++, "interval()", COMPUTATION, "创建一个按照给定的时间间隔发射整数序列的Observable", CommonString.INTERVAL, OperatorsUrl.INTERVAL, parentId));
         alloperatorses.add(new alloperators(i++, "timer()", COMPUTATION, "创建一个按照给定的时间间隔发射整数序列的Observable", CommonString.TIMER, OperatorsUrl.TIMER, parentId));
         alloperatorses.add(new alloperators(i++, "empty()", DEFAULT, "创建一个什么都不做直接通知完成的Observable", CommonString.EMPTY, OperatorsUrl.EMPTY, parentId));
