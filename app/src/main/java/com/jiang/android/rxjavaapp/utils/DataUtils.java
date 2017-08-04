@@ -48,7 +48,7 @@ import rx.schedulers.Schedulers;
 public class DataUtils {
     private static final String IMMEDIATE = "immediate";
     static long i = 1l;
-    static long parentId = 1l;
+    static long parentId = 0l;
 
     static final String COMPUTATION = "computation";
     static final String DEFAULT = "默认线程";
@@ -87,6 +87,7 @@ public class DataUtils {
 
     public static List<operators> getOperatorsData() {
         List<operators> lists = new ArrayList<>();
+        lists.add(new operators(0l, "RxJava 2.x", 0l));
         lists.add(new operators(1l, "RxJava 介绍", 1l));
         lists.add(new operators(2l, "创建操作", 2l));
         lists.add(new operators(3l, "变换操作", 3l));
@@ -106,6 +107,7 @@ public class DataUtils {
 
     public static List<alloperators> getAllOperators() {
         List<alloperators> alloperatorses = new ArrayList<>();
+        getRxJava2List(alloperatorses);
         getIntroduceList(alloperatorses);
         getCreatingList(alloperatorses);
         getTransformList(alloperatorses);
@@ -120,7 +122,15 @@ public class DataUtils {
         getBlockList(alloperatorses);
         getStringList(alloperatorses);
         getOthersList(alloperatorses);
+
         return alloperatorses;
+    }
+
+    private static void getRxJava2List(List<alloperators> alloperatorses) {
+        alloperatorses.add(new alloperators(i++, "RxJava2.x有什么不同", " ", "RxJava2.x与RxJava1.x的区别", CommonString.SPLASH_INDEX_URL, OperatorsUrl.R_2_INDEX, parentId));
+        alloperatorses.add(new alloperators(i++, "Flowable", " ", "Flowable操作符的使用", CommonString.SPLASH_INDEX_URL, OperatorsUrl.R_2_FLOWABLE, parentId));
+        alloperatorses.add(new alloperators(i++, "其他相关类", " ", "Single Completable Subject/Processor", CommonString.SPLASH_INDEX_URL, OperatorsUrl.R_2_OTHER, parentId));
+        parentId++;
     }
 
 

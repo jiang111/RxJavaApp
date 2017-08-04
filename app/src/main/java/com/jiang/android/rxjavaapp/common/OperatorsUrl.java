@@ -156,25 +156,31 @@ public class OperatorsUrl {
     public static final String OWN_OPERATE = "https://github.com/jiang111/RxDocs/blob/master/topics/Implementing-Your-Own-Operators.md";
     public static final String OWN_CHAJIAN = "https://github.com/jiang111/RxDocs/blob/master/topics/Plugins.md";
     public static final String ANDROID_MODULE = "https://github.com/jiang111/RxDocs/blob/master/topics/The-RxJava-Android-Module.md";
-    
+
     public static final String ERROR_HANDLE = "https://github.com/jiang111/RxDocs/blob/master/topics/Error-Handling.md";
     public static String start = "https://github.com/jiang111/RxDocs/blob/master/operators/Start.md#start";
     //connect
     public static String connect = "https://github.com/jiang111/RxDocs/blob/master/operators/Connect.md";
-    public static String publish="https://github.com/jiang111/RxDocs/blob/master/operators/Publish.md";
-    public static String replay="https://github.com/jiang111/RxDocs/blob/master/operators/Replay.md";
-    public static String refCount="https://github.com/jiang111/RxDocs/blob/master/operators/Refcount.md";
+    public static String publish = "https://github.com/jiang111/RxDocs/blob/master/operators/Publish.md";
+    public static String replay = "https://github.com/jiang111/RxDocs/blob/master/operators/Replay.md";
+    public static String refCount = "https://github.com/jiang111/RxDocs/blob/master/operators/Refcount.md";
     //block
-    public static String forEach="https://github.com/jiang111/RxDocs/blob/master/operators/Subscribe.md";
-    public static String first="https://github.com/jiang111/RxDocs/blob/master/operators/First.md";
-    public static String firstOrDefault="https://github.com/jiang111/RxDocs/blob/master/operators/First.md";
-    public static String lastOrDefault="https://github.com/jiang111/RxDocs/blob/master/operators/Last.md";
-    public static String mostRecent="https://github.com/jiang111/RxDocs/blob/master/operators/First.md";
-    public static String next="https://github.com/jiang111/RxDocs/blob/master/operators/TakeLast.md";
-    public static String single="https://github.com/jiang111/RxDocs/blob/master/operators/First.md";
-    public static String singleOrDefault="https://github.com/jiang111/RxDocs/blob/master/operators/First.md";
-    public static String toFuture="https://github.com/jiang111/RxDocs/blob/master/operators/To.md";
-    public static String toIterable="https://github.com/jiang111/RxDocs/blob/master/operators/To.md";
-    public static String getIterator="https://github.com/jiang111/RxDocs/blob/master/operators/To.md";
-    public static String last="https://github.com/jiang111/RxDocs/blob/master/operators/Last.md";
+    public static String forEach = "https://github.com/jiang111/RxDocs/blob/master/operators/Subscribe.md";
+    public static String first = "https://github.com/jiang111/RxDocs/blob/master/operators/First.md";
+    public static String firstOrDefault = "https://github.com/jiang111/RxDocs/blob/master/operators/First.md";
+    public static String lastOrDefault = "https://github.com/jiang111/RxDocs/blob/master/operators/Last.md";
+    public static String mostRecent = "https://github.com/jiang111/RxDocs/blob/master/operators/First.md";
+    public static String next = "https://github.com/jiang111/RxDocs/blob/master/operators/TakeLast.md";
+    public static String single = "https://github.com/jiang111/RxDocs/blob/master/operators/First.md";
+    public static String singleOrDefault = "https://github.com/jiang111/RxDocs/blob/master/operators/First.md";
+    public static String toFuture = "https://github.com/jiang111/RxDocs/blob/master/operators/To.md";
+    public static String toIterable = "https://github.com/jiang111/RxDocs/blob/master/operators/To.md";
+    public static String getIterator = "https://github.com/jiang111/RxDocs/blob/master/operators/To.md";
+    public static String last = "https://github.com/jiang111/RxDocs/blob/master/operators/Last.md";
+
+    //RxJava2.x
+    public static String R_2_INDEX = "https://github.com/jiang111/RxDocs/blob/master/RxJava2/What-different-in-2.md";
+    public static String R_2_FLOWABLE = "https://github.com/jiang111/RxDocs/blob/master/RxJava2/Flow.md";
+    public static String R_2_OTHER = "https://github.com/jiang111/RxDocs/blob/master/RxJava2/other.md";
+
 }
