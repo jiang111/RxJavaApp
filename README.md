@@ -1,6 +1,6 @@
 
 ### 学习RxJava操作符的APP
-全新升级,更漂亮,更耐看，已加入RxJava2.x介绍
+全新升级,更漂亮,更耐看，已加入RxJava2.x介绍 http://fir.im/bpdu
 
 ### 应用市场
 >* [应用宝下载](http://sj.qq.com/myapp/detail.htm?apkName=com.jiang.android.rxjavaapp)
