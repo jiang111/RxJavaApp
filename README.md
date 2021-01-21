@@ -2,8 +2,6 @@
 ### 学习RxJava操作符的APP
 全新升级,更漂亮,更耐看，已加入RxJava2.x介绍 自行编译
 
-### 应用市场
-
 ### 展示:
 <img src="https://raw.githubusercontent.com/jiang111/RxJavaApp/master/app/art/1.png" width=270  alt="" />
 <img src="https://raw.githubusercontent.com/jiang111/RxJavaApp/master/app/art/2.png" width=270  alt="" />
