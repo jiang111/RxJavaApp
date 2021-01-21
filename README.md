@@ -1,9 +1,8 @@
 
 ### 学习RxJava操作符的APP
-全新升级,更漂亮,更耐看，已加入RxJava2.x介绍 http://fir.im/bpdu
+全新升级,更漂亮,更耐看，已加入RxJava2.x介绍 自行编译
 
 ### 应用市场
->* [应用宝下载](http://sj.qq.com/myapp/detail.htm?apkName=com.jiang.android.rxjavaapp)
 
 ### 展示:
 <img src="https://raw.githubusercontent.com/jiang111/RxJavaApp/master/app/art/1.png" width=270  alt="" />
@@ -11,11 +10,10 @@
 <img src="https://raw.githubusercontent.com/jiang111/RxJavaApp/master/app/art/3.png" width=270  alt="" />
 
 ### 下载地址
->* 应用宝 <br />http://sj.qq.com/myapp/detail.htm?apkName=com.jiang.android.rxjavaapp
-
+>* 自行编译
 ### 说明:
 >* Logo来源于网络
->* app中用到的数据来自:https://github.com/jiang111/RxDocs  fork自: https://github.com/mcxiaoke/RxDocs
+>* app中用到的数据来自: https://github.com/mcxiaoke/RxDocs
 >* 介绍的操作符并不是全部操作符,大都是我们常用的,想要看全部操作符,请移步:http://reactivex.io/RxJava/javadoc/overview-summary.html
 >* 线程调度的一些说明可能不准确,如发现错误,欢迎提issue,我会及时更正过来
 
